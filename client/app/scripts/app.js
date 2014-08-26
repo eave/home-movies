@@ -28,6 +28,7 @@ angular
         controller: 'AboutCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/',
+        controller: 'MainCtrl'
       });
   });

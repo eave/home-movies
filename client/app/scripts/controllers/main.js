@@ -9,17 +9,7 @@
  * Controller of the clientApp
  */
 
- // Commented out!
 angular.module('clientApp')
-//   .controller('MainCtrl', function ($scope) {
-//     $scope.awesomeThings = [
-//       'HTML5 Boilerplate',
-//       'AngularJS',
-//       'Karma'
-//     ];
-//   });
-
-	// would have to add back $http below
 	.controller('MainCtrl', function($scope) {
 		$scope.addToMovies = function() {
 			var movieToAdd = $scope.addMovie.replace(/\s/g, '');
@@ -33,7 +23,6 @@ angular.module('clientApp')
 				},
 				success: function() {
 					$scope.ratings = 'meow';
-					// debugger;
 					console.log($scope.ratings);
 				},
 				error: function() {
@@ -61,6 +50,7 @@ angular.module('clientApp')
 
 		$scope.generateRecommendations = function() {
 			$scope.generateSimilarities();
+			// would need to set the below to 'request'
 			$.ajax({
 				type: 'POST',
 				url: 'http://localhost:7474/db/data/cypher/',
@@ -71,16 +61,17 @@ angular.module('clientApp')
 				success: function(data) {
 					$scope.results = data.data;
 					console.log($scope.results);
+					console.log('meow!');
 				},
+				async: false, // would like to replace this
 				error: function() {
 					console.log('Final error!');
 				}
 			});
+			// $.when(request).done(function(request) {
+			// 	$scope.results = request.data;
+			// 	console.log($scope.results);
+			// 	console.log('Done!');
+			// });
 		};
 	});
-
-
-// Works!
-// MERGE (DavidPonticello:Person {name:'David Ponticello'})
-// MERGE (RememberTheTitans:Movie {name:'Remember the Titans'})
-// MERGE (DavidPonticello)-[:RATED {rating: 9}]->(RememberTheTitans)
