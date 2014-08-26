@@ -22,11 +22,10 @@ angular.module('clientApp')
 				data: {'query' : 'MERGE ('+ $scope.userInput +':Person {name: "'+ $scope.userInput +'"}) MERGE ('+ movieToAdd +':Movie {name: "'+ $scope.addMovie +'"}) MERGE ('+ $scope.userInput +')-[:RATED {rating:'+ $scope.movieRating +'}]->('+ movieToAdd +')', 'params' : {}
 				},
 				success: function() {
-					$scope.ratings = 'meow';
-					console.log($scope.ratings);
+					console.log('Added movie successfully!');
 				},
 				error: function() {
-					console.log('woof!');
+					console.log('Failed to add movie!');
 				}
 			});
 		};
@@ -61,11 +60,11 @@ angular.module('clientApp')
 				success: function(data) {
 					$scope.results = data.data;
 					console.log($scope.results);
-					console.log('meow!');
+					console.log('Recommendations generated successfully!');
 				},
 				async: false, // would like to replace this
 				error: function() {
-					console.log('Final error!');
+					console.log('Failed to generate recommendations!');
 				}
 			});
 			// $.when(request).done(function(request) {
