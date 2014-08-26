@@ -1,23 +1,47 @@
 <div class="jumbotron">
-  <h1>What to watch?</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <!-- Add an image below! -->
+  <!-- <img src="images/yeoman.png" alt="I'm Yeoman"><br> -->
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+  <!-- Generate recommendation -->
+  <h1>Generate a recommendation!</h1>
+  <form class="form-inline" role="form">
+    <button ng-click="generateRecommendation()" class="btn btn-success">What should I watch?</button>
+  </form>
+  <table class="table">
+    <tr ng-repeat="movie in movies">
+      <td>{{movie[0].data.name}}</td>
+      <td>{{movie[0].data.rating}}</td>
+      <!-- <td>{{movie[0].data.reviewer}}</td>  -->
+    </tr>
+  </table>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+  <!-- Review movies -->
+  <h2Ha>Review movies!</h2>
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <label class="sr-only" for="addMovie">Input movie</label>
+      <input type="text" ng-model="userInput" class="form-control" id="userInput" placeholder="Include your usename here...">
+      <input type="text" ng-model="addMovie" class="form-control" id="addMovie" placeholder="Add a movie name here...">
+      <select name="rating" ng-model="movieRating">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+      </select>
+    </div>
+    <button ng-click="addToMovies()" class="btn btn-lg btn-success">Add to movies</button>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  </form>
+  <table class="table">
+    <tr ng-repeat="rating in ratings">
+      <td>{{ratings[0]}}</td><!-- <td>{{movie[0].data.rating}}</td> -->
+    </tr>
+  </table>
 </div>
