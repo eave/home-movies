@@ -6,15 +6,16 @@
   <!-- Generate recommendation -->
   <h1>Generate a recommendation!</h1>
   <form class="form-inline" role="form">
-    <button ng-click="generateRecommendation()" class="btn btn-success">What should I watch?</button>
+  <!-- switch this back to generateRecommendation when you're done testing -->
+    <button ng-click="generateRecommendations()" class="btn btn-success">What should I watch?</button>
   </form>
-  <table class="table">
+  <!-- <table class="table">
     <tr ng-repeat="movie in movies">
       <td>{{movie[0].data.name}}</td>
       <td>{{movie[0].data.rating}}</td>
-      <!-- <td>{{movie[0].data.reviewer}}</td>  -->
+      <td>{{movie[0].data.reviewer}}</td> 
     </tr>
-  </table>
+  </table> -->
 
   <!-- Review movies -->
   <h2Ha>Review movies!</h2>
@@ -40,8 +41,8 @@
 
   </form>
   <table class="table">
-    <tr ng-repeat="rating in ratings">
-      <td>{{ratings[0]}}</td><!-- <td>{{movie[0].data.rating}}</td> -->
+    <tr ng-repeat="result in results">
+      <td>{{result[0]}}</td><td>{{result[1]}}</td>
     </tr>
   </table>
 </div>
